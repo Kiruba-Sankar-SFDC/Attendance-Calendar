@@ -56,10 +56,7 @@ export default class AttendanceCalendar extends LightningElement {
             const date = new Date(currentYear, currentMonth, i+1);
             const dayOfWeek = date.getDay();
             let classes = '';
-            console.log('Date Without Format ' + date);
-            console.log('ISO String ' + date.toISOString());
-            console.log('Date ' + date.toISOString().split('T')[0]);
-
+           
             if (this.presentDates && this.presentDates.includes(date.toISOString().split('T')[0])) {
                 classes = 'present';
             } else if (this.absentDates && this.absentDates.includes(date.toISOString().split('T')[0])) {
@@ -70,7 +67,7 @@ export default class AttendanceCalendar extends LightningElement {
             i = i < 10 ? '0'+ i : i;
             week.push({ value: i, classes: classes });
 
-            if (dayOfWeek === 6) {
+            if (dayOfWeek === 0) {
                 calendar.push(week);
                 week = [];
             }
